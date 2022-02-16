@@ -1,0 +1,46 @@
+#端口
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+#数据库配置
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.0.233:3306/dataway?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+    druid:
+      initial-size: 3
+      min-idle: 3
+      max-active: 10
+      max-wait: 60
+      stat-view-servlet:
+        login-username: t1
+        login-password: 123
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1
+          enabled: true
+          db-type: mysql
+#mybatis配置
+mybatis:
+  type-aliases-package: com.joe.modules.entity
+  mapper-locations: classpath:mappers/*.xml
+#dataway config
+# 是否启用 DataWay 功能（必选：默认false）
+HASOR_DATAQL_DATAWAY: true
+# 是否开启 DataWay 后台管理界面（必选：默认false）
+HASOR_DATAQL_DATAWAY_ADMIN: true
+# DataWay  API工作路径（可选，默认：/api/）
+HASOR_DATAQL_DATAWAY_API_URL: /api/
+# DataWay-ui 的工作路径（可选，默认：/interface-ui/）
+HASOR_DATAQL_DATAWAY_UI_URL: /interface-ui/
+# SQL执行器方言设置（可选，建议设置）
+HASOR_DATAQL_FX_PAGE_DIALECT: mysql
